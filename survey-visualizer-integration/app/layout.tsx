@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import Nav from "./components/nav";
+import Nav from "./components/Nav";
 
 import { Sora } from 'next/font/google';
 

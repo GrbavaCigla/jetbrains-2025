@@ -1,5 +1,7 @@
 import "./globals.css";
 
+import Nav from "./components/nav";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -10,7 +12,10 @@ export default function RootLayout({
       <body
         className="antialiased"
       >
-        {children}
+        <div>
+          <Nav />
+          {children}
+        </div>
       </body>
     </html>
   );

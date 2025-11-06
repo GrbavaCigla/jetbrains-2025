@@ -1,6 +1,9 @@
+import CategoryListSection from "./components/sections/CategoryList";
 
 export default function Home() {
   return (
-    <div></div>
+    <main>
+      <CategoryListSection />
+    </main>
   );
 }

@@ -37,3 +37,8 @@ body {
     --size: 2rem;
     @apply font-bold border-black;
 }
+
+@utility toggle {
+  --input-color: black;
+  @apply checked:bg-accent;
+}

@@ -19,8 +19,9 @@ export default function BarChart({ data }: Props) {
     <ResponsiveContainer width="100%" height={600}>
       <BChart
         data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 120 }}
+        margin={{bottom: 100, left: 40, top:2, right:2}}
       >
+        <CartesianGrid vertical={false} horizontal={false} fill="white"/>
         <Tooltip
           labelClassName="font-bold"
           contentStyle={{
@@ -28,7 +29,7 @@ export default function BarChart({ data }: Props) {
             fontWeight: 600,
           }}
         />
-        <CartesianGrid stroke="#aaa" strokeWidth={4} />
+        <CartesianGrid stroke={"#000"} strokeWidth={4} verticalPoints={[1332]}  />
         <Bar
           dataKey="total_num_of_pending_questions"
           stackId="a"
@@ -59,14 +60,18 @@ export default function BarChart({ data }: Props) {
           textAnchor="end"
           height={100}
           tick={{ fill: "#000", fontWeight: "700", fontSize: 12 }}
-          axisLine={{ stroke: "#000", strokeWidth: 4 }}
-          tickLine={{ stroke: "#000", strokeWidth: 4 }}
+          axisLine={false}
+          tickLine={{ stroke: "#000", strokeWidth: 0 }}
         />
         <YAxis
           tick={{ fill: "#000", fontWeight: "700", fontSize: 12 }}
-          axisLine={{ stroke: "#000", strokeWidth: 4 }}
-          tickLine={{ stroke: "#000", strokeWidth: 4 }}
+          axisLine={false}
+          tickLine={{ stroke: "#000", strokeWidth: 0 }}
         />
+        {/* This a hack for when border is big because recharts doesn't render it well */}
+        <line x1={98} y1={0} x2={1334} y2={0} stroke="#000" strokeWidth={4} />
+        <line x1={100} y1={400} x2={100} y2={0} stroke="#000" strokeWidth={4} />
+        <line x1={98} y1={400} x2={1334} y2={400} stroke="#000" strokeWidth={4} />
       </BChart>
     </ResponsiveContainer>
   )

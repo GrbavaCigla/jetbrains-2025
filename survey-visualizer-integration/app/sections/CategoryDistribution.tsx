@@ -19,7 +19,7 @@ export default async function CategoryDistributionSection({categories}: Props) {
     <BaseSection>
       <h2 className="text-2xl font-semibold text-center">Question Distribution by Category</h2>
       <div className="flex flex-col md:flex-row items-start">
-        <div className="m-4 h-full w-full">
+        <div className="p-4 h-full w-full">
           <BarChart data={data} />
         </div>
         <div className="bg-white border-4 p-4 m-4 space-y-2">

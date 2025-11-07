@@ -1,10 +1,12 @@
-import getCategories from "@/app/api/categories";
 import Tag from "../components/Tag";
 import BaseSection from "../components/BaseSection";
+import { Category } from "../api/models";
 
-export default async function CategoryListSection() {
-  const categories = await getCategories() ?? [];
+interface Props {
+  categories: Array<Category>
+}
 
+export default async function CategoryListSection({categories}: Props) {
   const colors = [
     ["#F54927", "white"],
     ["#D3F527", undefined],

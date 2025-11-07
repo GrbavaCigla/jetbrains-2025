@@ -1,4 +1,3 @@
-import Tag from "../components/Tag";
 import BaseSection from "../components/BaseSection";
 import { Category } from "../api/models";
 

@@ -7,23 +7,20 @@ interface Props {
 }
 
 export default async function CategoryListSection({categories}: Props) {
-  const colors = [
-    ["#F54927", "white"],
-    ["#D3F527", undefined],
-    ["#27D3F5", "white"],
-    ["#4927F5", "white"],
-    ["#27F5B0", undefined],
+  const classes = [
+    "badge-primary",
+    "badge-secondary",
+    "badge-accent",
+    "badge-error",
+    "badge-warning",
+    "badge-success",
+    "badge-info",
+    "badge-neutral",
   ];
 
   const tags = categories.map(
     (cat, index) =>
-      <Tag
-        key={cat.id}
-        bg={colors[index % colors.length][0]}
-        fg={colors[index % colors.length][1]}
-      >
-        {cat.name}
-      </Tag>
+      <span key={cat.id} className={`badge ${classes[index % classes.length]}`}>{cat.name}</span>
   )
 
   return (

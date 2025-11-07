@@ -22,7 +22,7 @@ export default async function CategoryDistributionSection({categories}: Props) {
         <div className="p-4 h-full w-full">
           <BarChart data={data} />
         </div>
-        <div className="bg-white border-4 p-4 m-4 space-y-2">
+        <div className="bg-white border-(length:--border) p-4 m-4 space-y-2">
           <h3 className="text-lg font-bold text-center">Filters</h3>
         </div>
       </div>

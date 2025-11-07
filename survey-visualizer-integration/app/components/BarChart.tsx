@@ -39,7 +39,7 @@ export default function BarChart({ data, offset = 60, border = 4, ticklineStroke
           stackId="a"
           stroke="#000"
           strokeWidth={barStrokeWidth}
-          fill="#27F5B0"
+          className="fill-success"
           name="Verified"
         />
         <Bar
@@ -47,7 +47,7 @@ export default function BarChart({ data, offset = 60, border = 4, ticklineStroke
           stackId="a"
           stroke="#000"
           strokeWidth={barStrokeWidth}
-          fill="#D3F527"
+          className="fill-warning"
           name="Pending"
         />
         <Bar
@@ -55,7 +55,7 @@ export default function BarChart({ data, offset = 60, border = 4, ticklineStroke
           stackId="a"
           stroke="#000"
           strokeWidth={barStrokeWidth}
-          fill="#F54927"
+          className="fill-error"
           name="Rejected"
         />
         <XAxis

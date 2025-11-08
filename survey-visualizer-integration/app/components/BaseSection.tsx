@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode,
 }
 
-export default async function BaseSection({ children }: Props) {
+export default function BaseSection({ children }: Props) {
   return (
     <section className="border-b-(length:--border)">
       <div className="container mx-auto sm:border-x-(length:--border)">

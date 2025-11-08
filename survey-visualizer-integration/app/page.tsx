@@ -2,6 +2,7 @@ import { getCategories } from "@/app/api/client";
 
 import CategoryDistributionSection from "./sections/CategoryDistribution";
 import CategoryListSection from "./sections/CategoryList";
+import DifficultyDistributionSection from "./sections/DifficultyDistribution";
 
 export default async function Home() {
   const categories = (await getCategories()) ?? [];
@@ -10,6 +11,7 @@ export default async function Home() {
     <main>
       <CategoryListSection categories={categories} />
       <CategoryDistributionSection categories={categories} />
+      <DifficultyDistributionSection categories={categories} />
     </main>
   );
 }

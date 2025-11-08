@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import CategoryBarChartSidebar from "./CategoryBarChartSidebar";
 import { GlobalCountItem } from "../api/models";
 import BarChart from "./BarChart";
@@ -6,14 +6,19 @@ import { useState } from "react";
 
 interface DataItem extends GlobalCountItem {
   category: string | undefined;
-};
+}
 
 interface Props {
   height?: number;
   data: DataItem[];
+  bottomMargin?: number;
 }
 
-export default function CategoryBarChart({ data, height = 600 }: Props) {
+export default function CategoryBarChart({
+  data,
+  height = 600,
+  bottomMargin = 100,
+}: Props) {
   const [d, setD] = useState(data);
   const [grpChecked, setGrpChecked] = useState(false);
 
@@ -34,38 +39,71 @@ export default function CategoryBarChart({ data, height = 600 }: Props) {
         };
       }
 
-      grouped[mainCategory].total_num_of_questions += item.total_num_of_questions;
-      grouped[mainCategory].total_num_of_pending_questions += item.total_num_of_pending_questions;
-      grouped[mainCategory].total_num_of_verified_questions += item.total_num_of_verified_questions;
-      grouped[mainCategory].total_num_of_rejected_questions += item.total_num_of_rejected_questions;
+      grouped[mainCategory].total_num_of_questions +=
+        item.total_num_of_questions;
+      grouped[mainCategory].total_num_of_pending_questions +=
+        item.total_num_of_pending_questions;
+      grouped[mainCategory].total_num_of_verified_questions +=
+        item.total_num_of_verified_questions;
+      grouped[mainCategory].total_num_of_rejected_questions +=
+        item.total_num_of_rejected_questions;
     }
-    return Object.values(grouped).toSorted((a, b) => b.total_num_of_questions - a.total_num_of_questions);
-  }
+    return Object.values(grouped).toSorted(
+      (a, b) => b.total_num_of_questions - a.total_num_of_questions
+    );
+  };
 
   const groupedData = getGroupedData();
 
   const onSidebarChange = (groupChecked: boolean, categories: string[]) => {
     if (grpChecked !== groupChecked) setGrpChecked(groupChecked);
     setD(
-      (groupChecked ? groupedData : data)
-        .filter((val) => val.category !== undefined && categories.includes(val.category))
+      (groupChecked ? groupedData : data).filter(
+        (val) => val.category !== undefined && categories.includes(val.category)
+      )
     );
-  }
+  };
 
   return (
-    <div className="flex flex-col-reverse items-stretch md:flex-row" style={{height: height}}>
+    <div
+      className="flex flex-col-reverse items-stretch md:flex-row"
+      style={{ height: height }}
+    >
       <div className="p-4 flex-1">
         {/* 32=16*2 comes from padding p-4 */}
-        <BarChart data={d} yoffset={height - 200 - 32} />
+        <BarChart
+          data={d}
+          yoffset={height - 100 - bottomMargin - 32}
+          bottomMargin={bottomMargin}
+          fields={[
+            {
+              dataKey: "total_num_of_verified_questions",
+              name: "Verified",
+              fill: "var(--color-success)",
+            },
+            {
+              dataKey: "total_num_of_pending_questions",
+              name: "Pending",
+              fill: "var(--color-warning)",
+            },
+            {
+              dataKey: "total_num_of_rejected_questions",
+              name: "Rejected",
+              fill: "var(--color-error)",
+            },
+          ]}
+        />
       </div>
       <div className="m-4 shrink-0">
         <CategoryBarChartSidebar
           defaultGroupChecked={grpChecked}
           onChange={onSidebarChange}
-          categories={(grpChecked ? groupedData : data).map((val) => val.category).filter((val) => val !== undefined).toSorted()}
+          categories={(grpChecked ? groupedData : data)
+            .map((val) => val.category)
+            .filter((val) => val !== undefined)
+            .toSorted()}
         />
       </div>
     </div>
   );
 }
-

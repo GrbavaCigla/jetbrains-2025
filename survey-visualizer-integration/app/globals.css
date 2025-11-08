@@ -51,3 +51,7 @@ body {
   --input-color: black;
   @apply checked:bg-accent before:delay-0 before:duration-100 before:clip-path-none before:rotate-0;
 }
+
+@utility btn {
+  @apply border-black;
+}

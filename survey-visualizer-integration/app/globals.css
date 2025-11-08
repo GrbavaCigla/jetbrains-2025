@@ -35,10 +35,19 @@ body {
 
 @utility badge {
     --size: 2rem;
-    @apply font-bold border-black;
+    @apply font-bold border-black truncate;
 }
 
 @utility toggle {
   --input-color: black;
   @apply checked:bg-accent;
+}
+
+@utility clip-path-none {
+  clip-path: none;
+}
+
+@utility checkbox {
+  --input-color: black;
+  @apply checked:bg-accent before:delay-0 before:duration-100 before:clip-path-none before:rotate-0;
 }

@@ -9,11 +9,13 @@ interface DataItem extends GlobalCountItem {
 };
 
 interface Props {
+  height?: number;
   data: DataItem[];
 }
 
-export default function CategoryBarChart({ data }: Props) {
+export default function CategoryBarChart({ data, height = 600 }: Props) {
   const [d, setD] = useState(data);
+  const [grpChecked, setGrpChecked] = useState(false);
 
   const getGroupedData = () => {
     const grouped: Record<string, DataItem> = {};
@@ -42,15 +44,26 @@ export default function CategoryBarChart({ data }: Props) {
 
   const groupedData = getGroupedData();
 
-  const onSidebarChange = (groupChecked: boolean) => setD(groupChecked ? groupedData : data);
+  const onSidebarChange = (groupChecked: boolean, categories: string[]) => {
+    if (grpChecked !== groupChecked) setGrpChecked(groupChecked);
+    setD(
+      (groupChecked ? groupedData : data)
+        .filter((val) => val.category !== undefined && categories.includes(val.category))
+    );
+  }
 
   return (
-    <div className="flex flex-col-reverse items-stretch md:flex-row md:items-start">
-      <div className="p-4 h-full w-full">
-        <BarChart data={d} />
+    <div className="flex flex-col-reverse items-stretch md:flex-row" style={{height: height}}>
+      <div className="p-4 flex-1">
+        {/* 32=16*2 comes from padding p-4 */}
+        <BarChart data={d} yoffset={height - 200 - 32} />
       </div>
-      <div className="m-4">
-        <CategoryBarChartSidebar defaultGroupChecked={false} onChange={onSidebarChange} />
+      <div className="m-4 shrink-0">
+        <CategoryBarChartSidebar
+          defaultGroupChecked={grpChecked}
+          onChange={onSidebarChange}
+          categories={(grpChecked ? groupedData : data).map((val) => val.category).filter((val) => val !== undefined).toSorted()}
+        />
       </div>
     </div>
   );

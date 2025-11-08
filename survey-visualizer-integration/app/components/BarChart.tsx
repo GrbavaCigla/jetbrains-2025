@@ -12,15 +12,16 @@ import {
 
 interface Props {
   data: any[] | undefined,
-  offset?: number,
+  xoffset?: number,
+  yoffset?: number,
   border?: number,
   ticklineStrokeWidth?: number,
   barStrokeWidth?: number,
 }
 
-export default function BarChart({ data, offset = 60, border = 4, ticklineStrokeWidth = 4, barStrokeWidth = 2}: Props) {
+export default function BarChart({ data, xoffset = 60, yoffset = 400, border = 4, ticklineStrokeWidth = 4, barStrokeWidth = 2}: Props) {
   return (
-    <ResponsiveContainer width="100%" height={600}>
+    <ResponsiveContainer width="100%" height="100%">
       <BChart
         data={data}
         margin={{bottom: 100, top: border / 2, right: border / 2}}
@@ -73,10 +74,10 @@ export default function BarChart({ data, offset = 60, border = 4, ticklineStroke
           tickLine={{ stroke: "#000", strokeWidth: ticklineStrokeWidth }}
         />
         {/* This a hack for when border is big because recharts doesn't render it well */}
-        <line x1={"100%"} y1={400} x2={"100%"} y2={0} stroke="#000" strokeWidth={border * 2} />
-        <line x1={offset - border / 2} y1={0} x2={"100%"} y2={0} stroke="#000" strokeWidth={border} />
-        <line x1={offset} y1={400} x2={offset - border / 2} y2={0} stroke="#000" strokeWidth={border} />
-        <line x1={offset - border / 2} y1={400} x2={"100%"} y2={400} stroke="#000" strokeWidth={border} />
+        <line x1={"100%"} y1={yoffset} x2={"100%"} y2={0} stroke="#000" strokeWidth={border * 2} />
+        <line x1={xoffset - border / 2} y1={0} x2={"100%"} y2={0} stroke="#000" strokeWidth={border} />
+        <line x1={xoffset} y1={yoffset} x2={xoffset - border / 2} y2={0} stroke="#000" strokeWidth={border} />
+        <line x1={xoffset - border / 2} y1={yoffset} x2={"100%"} y2={yoffset} stroke="#000" strokeWidth={border} />
       </BChart>
     </ResponsiveContainer>
   )

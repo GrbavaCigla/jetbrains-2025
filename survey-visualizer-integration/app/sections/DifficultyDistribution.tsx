@@ -38,7 +38,7 @@ export default function DifficultyDistributionSection({
               cur!.total_medium_question_count,
             total_hard_question_count:
               acc!.total_hard_question_count + cur!.total_hard_question_count,
-          };
+          } as CategoryCountItem;
         })
     ).map(([name, count]) => {
       return { category: capitalize(name.split("_")[1]), count: count };

@@ -44,7 +44,7 @@ export default function CategoryBarChartSidebar({ defaultGroupChecked = false, o
   );
 
   return (
-    <div className="bg-white border-(length:--border) flex flex-col md:max-w-xs overflow-hidden h-full">
+    <div className="bg-white border-(length:--border) flex flex-col w-80 overflow-hidden h-full">
       <h3 className="text-lg font-bold text-center p-4">Filters</h3>
       <label className="label font-semibold px-4 pb-4 border-b-(length:--border) border-black">
         <span className="pr-4 mr-auto">Group categories</span>

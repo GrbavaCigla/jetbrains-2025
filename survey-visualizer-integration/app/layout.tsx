@@ -2,11 +2,11 @@ import "./globals.css";
 
 import Nav from "./components/Nav";
 
-import { Sora } from 'next/font/google';
+import { Sora } from "next/font/google";
 
 const sora = Sora({
   subsets: ["latin"],
-})
+});
 
 export default function RootLayout({
   children,
@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${sora.className} antialiased`}
-      >
+      <body className={`${sora.className} antialiased`}>
         <div>
           <Nav />
           {children}

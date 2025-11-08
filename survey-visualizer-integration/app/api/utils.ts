@@ -3,7 +3,10 @@ export async function resolve(
   init?: RequestInit | undefined,
   session?: string | null
 ): Promise<Object | null> {
-  input = session === null || session === undefined ? input : `${input}?=token=${session}`;
+  input =
+    session === null || session === undefined
+      ? input
+      : `${input}?=token=${session}`;
 
   let opts: RequestInit = init == undefined ? {} : init;
   opts.headers = { "Content-Type": "application/json" };
@@ -13,9 +16,7 @@ export async function resolve(
       const text = await resp.text();
       const to_return = text == "" ? null : JSON.parse(text);
 
-      return resp.ok
-        ? to_return
-        : null;
+      return resp.ok ? to_return : null;
     })
     .catch((reason) => {
       return null;

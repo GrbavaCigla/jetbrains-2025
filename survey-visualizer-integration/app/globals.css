@@ -34,8 +34,8 @@ body {
 }
 
 @utility badge {
-    --size: 2rem;
-    @apply font-bold border-black truncate;
+  --size: 2rem;
+  @apply font-bold border-black truncate;
 }
 
 @utility toggle {

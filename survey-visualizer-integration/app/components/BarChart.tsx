@@ -80,24 +80,16 @@ export default function BarChart({
         {/* This a hack for when border is big because recharts doesn't render it well */}
         <line
           x1={"100%"}
-          y1={yoffset}
+          y1={yoffset + border / 2}
           x2={"100%"}
           y2={0}
           stroke="#000"
           strokeWidth={border * 2}
         />
         <line
-          x1={xoffset - border / 2}
-          y1={0}
-          x2={"100%"}
-          y2={0}
-          stroke="#000"
-          strokeWidth={border}
-        />
-        <line
           x1={xoffset}
           y1={yoffset}
-          x2={xoffset - border / 2}
+          x2={xoffset}
           y2={0}
           stroke="#000"
           strokeWidth={border}

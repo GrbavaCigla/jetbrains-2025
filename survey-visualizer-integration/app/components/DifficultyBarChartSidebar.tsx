@@ -9,7 +9,7 @@ export default function DifficultyBarChartSidebar({ onChange }: Props) {
   };
 
   return (
-    <div className="bg-white border-(length:--border) flex flex-col w-80 p-4 overflow-hidden h-full">
+    <div className="bg-white border-(length:--border) flex flex-col md:w-80 p-4 overflow-hidden h-full">
       <h3 className="text-lg font-bold text-center pb-4">Filters</h3>
       <div className="filter items-center justify-center">
         <input

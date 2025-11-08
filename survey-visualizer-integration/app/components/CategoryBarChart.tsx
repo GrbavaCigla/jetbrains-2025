@@ -65,11 +65,8 @@ export default function CategoryBarChart({
   };
 
   return (
-    <div
-      className="flex flex-col-reverse items-stretch md:flex-row"
-      style={{ height: height }}
-    >
-      <div className="p-4 flex-1">
+    <div className="flex flex-col-reverse items-stretch md:flex-row">
+      <div className="p-4 md:flex-1" style={{ height: height }}>
         {/* 32=16*2 comes from padding p-4 */}
         <BarChart
           data={d}
@@ -94,7 +91,7 @@ export default function CategoryBarChart({
           ]}
         />
       </div>
-      <div className="m-4 shrink-0">
+      <div className="m-4 shrink-0 max-md:h-72!" style={{ height: height }}>
         <CategoryBarChartSidebar
           defaultGroupChecked={grpChecked}
           onChange={onSidebarChange}

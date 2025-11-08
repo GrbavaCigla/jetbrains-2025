@@ -71,10 +71,9 @@ export default function DifficultyDistributionSection({
         Question Distribution by Difficulty
       </h2>
       <div
-        className="flex flex-col-reverse items-start md:flex-row"
-        style={{ height: height }}
+        className="flex flex-col-reverse items-stretch md:items-start md:flex-row"
       >
-        <div className="p-4 flex-1 h-full">
+        <div className="p-4 md:flex-1" style={{ height: height }}>
           {isLoading ? (
             <div className="h-full flex items-center justify-center">
               <span className="loading loading-spinner loading-xl" />
